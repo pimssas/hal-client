@@ -6,30 +6,16 @@ on:
 
 jobs:
   tests:
-    name: Tests (PHP ${{ matrix.php }}, Guzzle ${{ matrix.guzzle }})
+    name: Tests (PHP ${{ matrix.php }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
         include:
           - php: '7.2'
-            guzzle: '^5'
-          - php: '7.2'
-            guzzle: '^6'
-          - php: '7.2'
-            guzzle: '^7'
           - php: '7.4'
-            guzzle: '^5'
-          - php: '7.4'
-            guzzle: '^6'
-          - php: '7.4'
-            guzzle: '^7'
             code-coverage: 'yes'
           - php: '8.0'
-            guzzle: '^5'
-          - php: '8.0'
-            guzzle: '^6'
-          - php: '8.0'
-            guzzle: '^7'
+          - php: '8.1'
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -42,7 +28,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer require --no-update "guzzlehttp/guzzle:${{ matrix.guzzle }}"
+          composer require --no-update
+#          "guzzlehttp/guzzle:${{ matrix.guzzle }}"
           composer update --no-interaction --no-progress --prefer-dist
           composer info -D
 
