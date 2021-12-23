@@ -29,7 +29,6 @@ jobs:
       - name: Install dependencies
         run: |
           composer require --no-update
-#          "guzzlehttp/guzzle:${{ matrix.guzzle }}"
           composer update --no-interaction --no-progress --prefer-dist
           composer info -D
 
